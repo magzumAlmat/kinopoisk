@@ -1,0 +1,70 @@
+.main-content {
+    width: 100%;
+    padding: 15px 30px;
+    box-sizing: border-box;
+}
+.profile{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 90px;
+
+
+}
+
+
+.profile-img{
+    width: 15%;
+    
+}
+
+
+.profile-img img{
+    width: 100%;
+ 
+
+}
+
+
+.profile-info{
+    width: 80%;
+}
+
+.profile-info p{
+    font-size: 16px;
+    margin-bottom: 70px;
+
+}
+
+
+.profile-info p span{
+    font-weight: 600;
+}
+
+
+.edit-btn{
+    padding: 5px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.edit-btn {
+    background: linear-gradient(90deg,#ff5c4d,#eb469f 26.56%,#8341ef 75%,#3f68f9);
+}
+
+.logout-btn {
+    background-color: #eb469f;
+    padding: 7px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    color:#fff;
+    font-weight: 600;
+    font-size: 16px;
+}
+

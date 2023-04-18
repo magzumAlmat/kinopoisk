@@ -1,0 +1,41 @@
+.film-btns button{
+    margin-bottom: 15px;
+    width: 100%;
+ 
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor:pointer
+}
+
+
+
+.film-btns button:first-child{
+    margin-bottom: 25px;
+    width: 100%;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+
+
+    background-color: yellow;
+}
+
+
+
+.film-btns button:last-child{
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+
+
+    background-color: blue;
+    color:#fff;
+    
+}
+
+

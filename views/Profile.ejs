@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('partials/Head.ejs') %>
+        <title>Document</title>
+
+    </head>
+    <body>
+        <%- include('partials/Header.ejs') %>
+
+        <div class="container">
+            <div class="main">
+                <div class="categories">
+                    <a href="">Драма</a>
+                    <a href="">Комедии</a>
+                    <a href="">Ужасы</a>
+                </div>
+                <div class="main-content">
+                    <h3>Профиль</h3>
+
+
+                    <div class="main-content">
+
+                        <div class="profile">
+
+                            <div id="profile-img">
+                                <img src="/images/films/avatarProfile.jpeg" alt="" style="width: 66%;
+                                border-radius: 60%;
+                                border: 1px solid;">
+                            </div>
+
+                            <div id="profile-info">
+                                <p>
+                                    <span>Полное имя:</span>
+                                    Senku Ishigami</p>
+                                <p>
+                                    <span>Email:
+                                    </span>Senku@mail.ru</p>
+                                <button class="edit-btn">
+                                    <p>Редактировать профиль</p>
+                                </button>
+                                <button class="logout-btn">
+                                    <p>Выход</p>
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <div class="card-right"></div>
+
+
+                        <br>
+
+                        
+                        
+                        <h3>Saved Films</h3>
+                        <div class="main-card ">
+                            <div class="card-left">
+                                <div class='film-img'>
+                                    <img src="/images/films/film1.webp" alt="cc"/>
+                                </div>
+                                <div class="film-info">
+                                    <a>Все везде и сразу</a>
+                                    <a>Everything Everywhere All at Once, 2021, 139  мин</a>
+                                    <a href="">США, фантастика</a>
+                                    <button class="film-btn">
+                                        <img src="/images/icons/play.svg" alt="">
+
+                                        Смотреть
+                                    </button>
+
+
+                                </div>
+                            </div>
+
+                            <div class="card-right">
+                                <div class="film-rate">
+                                    <p>7.3</p>
+                                </div>
+                                <button class="film-btn">
+                                    <img src="data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.667 8A1.333 1.333 0 1 1 2 8a1.333 1.333 0 0 1 2.667 0Zm4.666 0a1.333 1.333 0 1 1-2.666 0 1.333 1.333 0 0 1 2.666 0Zm3.334 1.333a1.333 1.333 0 1 0 0-2.666 1.333 1.333 0 0 0 0 2.666Z'/%3E %3C/svg%3E" alt="">
+                                    Буду Смотреть
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+</html>
+
