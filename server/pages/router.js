@@ -6,8 +6,8 @@ const ganres=require('../Genres/Genres')
 
 const counrty= require('../Country/Country')
 router.get('/',async(req,res) =>{
-    const allGanres=await ganres.find()
-    const allCountries=await counrty.find()
+    const allGanres= await ganres.find()
+    const allCountries= await counrty.find()
     res.render("index",{ganres:allGanres,country:allCountries})
 })
 

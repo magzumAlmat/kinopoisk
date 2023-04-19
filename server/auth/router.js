@@ -4,6 +4,6 @@ const router= express.Router()
 // const writeDataCountry=require('./Seed')
 // const {getAllCounties} = require('./Controller')
 const {signUp}=require('./Controller')
-router.post("/api/signup",signUp)
+router.post("/api/signup/",signUp)
 
 module.exports=router
