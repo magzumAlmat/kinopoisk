@@ -6,8 +6,9 @@ const {getAllCounties} = require('./Controller')
 
 
 
-
 router.get('/api/country',getAllCounties)
 writeDataCountry()
 
 module.exports=router
+
+

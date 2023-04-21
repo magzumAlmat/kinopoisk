@@ -3,7 +3,7 @@
     padding: 15px 30px;
     box-sizing: border-box;
 }
-.profile{
+.profile {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,7 +26,7 @@
 }
 
 
-.profile-info{
+.profile-info {
     width: 80%;
 }
 
@@ -42,7 +42,7 @@
 }
 
 
-.edit-btn{
+.edit-btn {
     padding: 5px 20px;
     border: none;
     border-radius: 15px;
@@ -51,9 +51,6 @@
     font-weight: 600;
     font-size: 16px;
     margin-bottom: 5px;
-}
-
-.edit-btn {
     background: linear-gradient(90deg,#ff5c4d,#eb469f 26.56%,#8341ef 75%,#3f68f9);
 }
 

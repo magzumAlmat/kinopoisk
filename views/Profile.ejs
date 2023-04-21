@@ -11,10 +11,12 @@
         <div class="container">
             <div class="main">
                 <div class="categories">
-                    <a href="">Драма</a>
-                    <a href="">Комедии</a>
-                    <a href="">Ужасы</a>
-                </div>
+                    <% ganres.forEach(ganre => {%>
+                       <a href="/<%=ganre.key%>"><%=ganre.name%></a>
+                        <%
+                    }) %>
+                   
+                  </div>
                 <div class="main-content">
                     <h3>Профиль</h3>
 
@@ -30,18 +32,21 @@
                             </div>
 
                             <div id="profile-info">
+                                
                                 <p>
                                     <span>Полное имя:</span>
                                     Senku Ishigami</p>
                                 <p>
                                     <span>Email:
                                     </span>Senku@mail.ru</p>
-                                <button class="edit-btn">
-                                    <p>Редактировать профиль</p>
-                                </button>
-                                <button class="logout-btn">
-                                    <p>Выход</p>
-                                </button>
+                                    <br><br>
+                                <a class="edit-btn">
+                                    Редактировать профиль
+                                </a>
+                                <br><br>
+                                <a class="edit-btn" href="/api/signout">
+                                    Выход
+                                </a>
 
                             </div>
                         </div>

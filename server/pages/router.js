@@ -5,10 +5,11 @@ const router= express.Router()
 const ganres=require('../Genres/Genres')
 
 const counrty= require('../Country/Country')
+
 router.get('/',async(req,res) =>{
-    const allGanres= await ganres.find()
-    const allCountries= await counrty.find()
-    res.render("index",{ganres:allGanres,country:allCountries})
+    const allGanres=await ganres.find()
+    const allCountries=await counrty.find()
+    res.render("index",{ganres:allGanres,counrty:allCountries})
 })
 
 
@@ -23,8 +24,11 @@ router.get('/register',(req,res) =>{
     res.render("Register")
 })
 
-router.get('/profile',(req,res) =>{
-    res.render("Profile")
+router.get('/profile/:id',async(req,res) =>{
+    const allGanres=await ganres.find()
+    const allCountries=await counrty.find()
+    
+    res.render("Profile",{ganres:allGanres,counrty:allCountries})
 })
 
 router.get('/admin',(req,res) =>{
