@@ -11,9 +11,10 @@
         <div class="container">
             <div class="main">
                 <div class="categories">
-                    <a href="">Драма</a>
-                    <a href="">Комедии</a>
-                    <a href="">Ужасы</a>
+                    <% ganres.forEach(ganre => {%>
+                        <a href="/<%=ganre.key%>"><%=ganre.name%></a>
+                         <%
+                     }) %>
                 </div>
                 <div class="main-content">
                     <h3>Профиль</h3>
@@ -30,20 +31,29 @@
                             </div>
 
                             <div id="profile-info">
+                                
                                 <p>
                                     <span>Полное имя:</span>
-                                    Senku Ishigami</p>
+                                    <%=user.full_name %></p>
                                 <p>
                                     <span>Email:
-                                    </span>Senku@mail.ru</p>
-                                <button class="edit-btn">
-                                    <p>
-                                        Редактировать профиль</p>
-                                </button>
-                                <button class="logout-btn">
-                                    <p>Выход</p>
-                                </button>
+                                    </span><%=user.email %></p>
+                                    <br><br>
+                                <%
+                                    if(loginUser.id == user.id){                               
+                                %>
 
+                                <a class="edit-btn">
+                                    Редактировать профиль
+                                </a>
+                                <br><br>
+                                <a class="edit-btn" href="/api/signout">
+                                    Выход
+                                </a>
+
+
+                                <% }%>
+                               
                             </div>
                         </div>
 
@@ -53,7 +63,7 @@
                         <br>
 
                       
-                        <h3>Saved Films</h3>
+                        <h3>Films</h3>
                         <button id="addFilm"><a href="/addfilm" class="add-btn">Add film</a>   </button>
                         <div class="main-card ">
                             <div class="card-left">

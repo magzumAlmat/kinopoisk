@@ -29,8 +29,25 @@
 
 
         </div>
+           
+
             <div class="header-buttons">
-                <a href="/Login">Войти</a>
+                <% 
+                if(user._id && user.isAdmin){ 
+                %>
+                <a href="/admin/<%=user._id%>">PROFILE Admin</a>
+                <%
+                }else if(user._id && !user.isAdmin) {
+                %>
+                <a href="/profile/<%=user._id%>">PROFILE</a>
+               
+                <%
+            }else{
+                %>
+                  <a href="/login">Войти</a>
+                <%  
+                }
+                %>
             </div>
         
   

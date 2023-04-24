@@ -13,15 +13,21 @@ passport.use(new localStrategy(
     function(email,password,done){
         
         User.findOne({email}).then(user=>{
-            bcrypt.compare(String(password),String(user.password),function(err,result){
-                if (err) {
-                    return done(err)
-                 }
-                if (result) {
-                    return done(null,user)
-                }
-
-        })
+            if (user.password){
+                bcrypt.compare(String(password),String(user.password),function(err,result){
+                    if (err) {
+                        return done(err)
+                     }
+                    if (result) {
+                        return done(null,user)
+                    }
+    
+            })
+            }
+            else{
+                return done(' User not found')
+            }
+           
 
         }).catch(e=>{return done(e) })
     }

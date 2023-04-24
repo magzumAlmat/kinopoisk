@@ -35,11 +35,15 @@
                                 
                                 <p>
                                     <span>Полное имя:</span>
-                                    Senku Ishigami</p>
+                                    <%=user.full_name %></p>
                                 <p>
                                     <span>Email:
-                                    </span>Senku@mail.ru</p>
+                                    </span><%=user.email %></p>
                                     <br><br>
+                                <%
+                                    if(loginUser.id == user.id){                               
+                                %>
+
                                 <a class="edit-btn">
                                     Редактировать профиль
                                 </a>
@@ -48,6 +52,9 @@
                                     Выход
                                 </a>
 
+
+                                <% }%>
+                               
                             </div>
                         </div>
 
