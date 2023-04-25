@@ -8,22 +8,24 @@
     <%- include('partials/Header.ejs') %>
     <div id="container">
         <div id="main">
-            <form action="" class="form">
+            <form action="/api/addFilm" method='POST' class="form"  
+            
+            >
            <h3>Новый фильм</h3>
 
                 <fieldset class="fieldset">
                     <label for="">Выберите постер для фильма</label>
-                    <input type="file"  name="film-img">
+                    <input type="file"  name="image">
                 </fieldset>
 
                 <fieldset class="fieldset">
                     <label for="">Название фильма на русском</label>
-                    <input type="text" placeholder="Введите название фильма на русском" name="name-rus">
+                    <input type="text" placeholder="Введите название фильма на русском" name="titleRus">
                 </fieldset>
 
                 <fieldset class="fieldset">
                     <label for="">Название фильма на английском</label>
-                    <input type="text" placeholder="ВНазвание фильма на английском" name="name-eng">
+                    <input type="text" placeholder="ВНазвание фильма на английском" name="titleEng">
                 </fieldset>
 
 
@@ -39,17 +41,14 @@
                 </fieldset>
                 
 
-                <fieldset class="fieldset">
-                    <label for="">Дительность фильма в минутах</label>
-                    <input type="number" placeholder="Введите длительность " name="time">
-                </fieldset>
+             
 
 
                 <fieldset class="fieldset">
                     <label for="">Cтрана выпуска</label>
                     <select name="country" id="">
-                        <% counrty.forEach(country => {%>
-                            <option><%=country.name%></option>
+                        <% country.forEach(country => {%>
+                            <option value="<%=country._id%>"><%=country.name%></option>
                             
                              <%
                          }) %>
@@ -62,7 +61,7 @@
                     <label for="">Жанр фильма</label>
                     <select name="ganre" id="">
                         <% ganres.forEach(ganre => {%>
-                            <option><%=ganre.name%></option>
+                            <option value="<%=ganre._id%>"><%=ganre.name%></option>
 
                              <%
                          }) %>

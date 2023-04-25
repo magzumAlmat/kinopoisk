@@ -28,9 +28,7 @@ app.use(session({
 
 }))
 
-
 app.set("view engine","ejs")
-
 
 app.use(passport.initialize())
 app.use(passport.session())
@@ -44,7 +42,7 @@ app.use(require('./server/Genres/router'))
 
 app.use(require('./server/Country/router'))
 
-
+app.use(require('./server/Films/router'))
 
 const PORT=8000
 

@@ -5,4 +5,4 @@ const CountySchema=new mongoose.Schema({
     key:Number,
 
 })
-module.exports=mongoose.model('counrty',CountySchema)
+module.exports=mongoose.model('country',CountySchema)

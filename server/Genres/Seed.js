@@ -5,7 +5,7 @@ const data=[
 ]
 
  async function writeDataGenre(){
-    const length= await Genres.count()
+    const length = await Genres.count()
     if (length==0){
         data.map((item,index)=>{
             new Genres({

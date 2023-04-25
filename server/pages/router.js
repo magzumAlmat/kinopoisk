@@ -4,13 +4,13 @@ const router= express.Router()
 
 const ganres=require('../Genres/Genres')
 
-const counrty= require('../Country/Country')
+const country= require('../Country/Country')
 
 const User=require('../auth/User')
 
 router.get('/',async(req,res) =>{
     const allGanres=await ganres.find()
-    const allCountries=await counrty.find()
+    const allCountries=await country.find()
     const user = await User.findById(req.params.id)
     res.render("index",{ganres:allGanres,country:allCountries,user:req.user?req.user:{}})
     //,loginUser:req.user
@@ -21,7 +21,7 @@ router.get('/',async(req,res) =>{
 
 
 router.get('/login',async (req,res) =>{
-    const allCountries=await counrty.find()
+    const allCountries=await country.find()
     res.render("Login",{user:req.user?req.user:{}})
 })
 
@@ -32,7 +32,7 @@ router.get('/register',(req,res) =>{
 
 router.get('/profile/:id',async(req,res) =>{
     const allGanres=await ganres.find()
-    const allCountries=await counrty.find()
+    const allCountries=await country.find()
     const user = await User.findById(req.params.id)
     // res.render("Profile",{ganres:allGanres,counrty:allCountries,user:req.user.id})
     
@@ -53,15 +53,15 @@ router.get('/admin/:id', async (req,res) =>{
 
 router.get('/addfilm',async(req,res) =>{
     const allGanres=await ganres.find()
-    const allCountries=await counrty.find()
-    res.render("AddFilm",{ganres:allGanres,counrty:allCountries})
+    const allCountries=await country.find()
+    res.render("AddFilm",{ganres:allGanres,country:allCountries,user:req.user ? req.user:{}})
 })
 
 
 router.get('/editfilm',async(req,res) =>{
     const allGanres=await ganres.find()
     const allCountries=await counrty.find()
-    res.render("EditFilm",{ganres:allGanres,counrty:allCountries})
+    res.render("EditFilm",{ganres:allGanres,country:allCountries})
 })
 
 
