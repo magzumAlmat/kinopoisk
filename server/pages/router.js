@@ -8,11 +8,20 @@ const country= require('../Country/Country')
 
 const User=require('../auth/User')
 
+const Film=require('../Films/Film')
+
 router.get('/',async(req,res) =>{
-    const allGanres=await ganres.find()
-    const allCountries=await country.find()
-    const user = await User.findById(req.params.id)
-    res.render("index",{ganres:allGanres,country:allCountries,user:req.user?req.user:{}})
+    const allGanres= await ganres.find()
+    const allCountries= await country.find()
+
+    const films = await Film.find()
+
+    const userr= await User.findById(req.params.id)
+    res.render("index",
+                            {films:films,
+                             ganres:allGanres,
+                             country:allCountries,
+                             user:req.user ? req.user:{}})
     //,loginUser:req.user
     // console.log('user= ',user)
 })
@@ -45,9 +54,10 @@ router.get('/profile/:id',async(req,res) =>{
 })
 
 router.get('/admin/:id', async (req,res) =>{
+    const films= await Film.find()
     const allGanres=await ganres.find()
     const user = await User.findById(req.params.id)
-    res.render("AdminProfile",{user:req.user ? req.user:{},ganres:allGanres,loginUser:req.user })
+    res.render("AdminProfile",{films:films,user:req.user ? req.user:{},ganres:allGanres,loginUser:req.user })
 })
 
 

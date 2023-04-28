@@ -9,7 +9,10 @@ const createFilm=async(req,res) => {
     console.log('req.body=== ',req.body.time)
     console.log('req.body=== ',req.body.country)
     console.log('req.body=== ',req.body.ganre)
+    console.log('req user_id',req.user._id)
+    
     if (
+        // req.file.length > 2 &&
         req.body.titleRus.length>2 && 
         req.body.titleEng.length>2 && 
         req.body.year.length>0 && 
@@ -17,18 +20,16 @@ const createFilm=async(req,res) => {
         req.body.country.length>2 && 
         req.body.ganre.length>2)
     {
-
         console.log(' if idet po vetke true ', req.file)
         await new Film({
-            author:req.user._id,
             titleRus:req.body.titleRus,
             titleEng:req.body.titleEng,
             year:req.body.year,
             time:req.body.time,
             country:req.body.country,
             ganre:req.body.ganre,
-            image:req.body.image,
-            
+            image:`/images/films/${req.file.filename}`,
+            author:req.user._id,
             // image:`${req.file.destination}/${req.file.filename}`,
         }).save()
 

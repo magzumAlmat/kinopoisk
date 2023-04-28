@@ -9,6 +9,7 @@ const FilmSchema=new mongoose.Schema({
     country:{type:Schema.Types.ObjectId,ref: "country"},
     ganre:{type:Schema.Types.ObjectId,ref: "genre"},
     image:String,
+    author:String,
 })
 
 
