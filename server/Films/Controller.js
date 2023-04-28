@@ -1,14 +1,15 @@
 const Film=require('./Film')
 const createFilm=async(req,res) => {
     console.log('req.user._id= ',req.user._id)
-    // console.log('req.body=== ',req)
-    // console.log('req.body=== ',req.body.titleRus)
-    // console.log('req.body=== ',req.body.titleEng)
-    // console.log('req.body=== ',req.body.year)
-    // console.log('req.body=== ',req.body.time)
-    // console.log('req.body=== ',req.body.country)
-    // console.log('req.body=== ',req.body.ganre)
-    if (req.body.image &&
+    
+    console.log('req.body=== ',req.body)
+    console.log('req.body=== ',req.body.titleRus)
+    console.log('req.body=== ',req.body.titleEng)
+    console.log('req.body=== ',req.body.year)
+    console.log('req.body=== ',req.body.time)
+    console.log('req.body=== ',req.body.country)
+    console.log('req.body=== ',req.body.ganre)
+    if (
         req.body.titleRus.length>2 && 
         req.body.titleEng.length>2 && 
         req.body.year.length>0 && 
@@ -17,7 +18,7 @@ const createFilm=async(req,res) => {
         req.body.ganre.length>2)
     {
 
-        console.log(' if idet po vetke true ')
+        console.log(' if idet po vetke true ', req.file)
         await new Film({
             author:req.user._id,
             titleRus:req.body.titleRus,
@@ -36,6 +37,6 @@ const createFilm=async(req,res) => {
     {
         res.redirect('/new&error=1')
     }
-
+    console.log('req.body.film = ',req.body.film)
 }
 module.exports={createFilm}
