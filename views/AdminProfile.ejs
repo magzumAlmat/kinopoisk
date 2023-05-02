@@ -64,23 +64,29 @@
 
                       
                         <h3>Films</h3>
+
                         <button id="addFilm"><a href="/addfilm" class="add-btn">Add film</a>   </button>
+                        
+                <%
+                films.forEach(item=>{
+                    console.log('item=   ',item)
+            %>
                         <div class="main-card ">
                             <div class="card-left">
                                 <div class='film-img'>
-                                    <img src="/images/films/film1.webp" alt="cc"/>
+                                    <img src="<%=item.image%>" alt="cc"/>
                                 </div>
                                 <div class="film-info">
-                                    <a>Все везде и сразу</a>
-                                    <a>Everything Everywhere All at Once, 2021, 139  мин</a>
-                                    <a href="">США, фантастика</a>
+                          
+                                    <a><%=item.titleRus%></a>
+                                    <a><%=item.year%></a>
+                                    <a><%=item.time%></a>
+                                    <a href=""><%=item.country.name%>, <%=item.ganre.name%></a>
+                                    <a href="">Автор: <%=item.author.full_name%></a>
                                     <button class="film-btn">
                                         <img src="/images/icons/play.svg" alt="">
-
                                         Смотреть
                                     </button>
-
-
                                 </div>
                             </div>
 
@@ -92,13 +98,20 @@
                                     
                                     <div id="film-btns">
                                     <button > 
-                                          <a href="/editFilm">      Редактировать</a>
+                                          <a href="/editfilm/<%=item._id%>">      Редактировать</a>
                                     </button>
-                                    <button >Удалить</button>
+                                    
+                                    <form method="POST" action="/api/deletefilm/">
+                                        <input type="hidden" name="id" value="<%= item._id %>" />
+                                        <button type="submit">Delete</button>
+                                        </form>
                                 </div>
                             
                             </div>
                         </div>
+                        <%     
+                    })
+                %>
 
 
                     </div>

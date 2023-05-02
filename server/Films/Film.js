@@ -7,9 +7,9 @@ const FilmSchema=new mongoose.Schema({
     time:String,
     key:Number,
     country:{type:Schema.Types.ObjectId,ref: "country"},
-    ganre:{type:Schema.Types.ObjectId,ref: "genre"},
+    ganre:{type:Schema.Types.ObjectId,ref: "ganre"},
     image:String,
-    author:String,
+    author:{type:Schema.Types.ObjectId,ref: "users"},
 })
 
 

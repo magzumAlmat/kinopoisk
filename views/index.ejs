@@ -11,7 +11,10 @@
     <div class="container">
         <div class="main">
           <div class="categories">
-            <% ganres.forEach(ganre => {%>
+            <% genres.forEach(ganre => {
+                console.log('ganre= ',ganre.name)
+                %>
+                
                <a href="/<%=ganre.key%>"><%=ganre.name%></a>
                 <%
             }) %>
@@ -19,10 +22,13 @@
           </div>
           <div class="main-content">
             <h3>Фильмы и сериалы</h3>
-            <img src="public/images/films/1682657325456.png" alt="">
+            
                 <%
                     films.forEach(item=>{
                         console.log('item=   ',item)
+
+                    
+                        
                 %>
           
          
@@ -35,9 +41,9 @@
                     <div class="film-info">
               
                         <a><%=item.titleRus%></a>
-                        <a><%=item.year%></a>
-                        <a><%=item.time%></a>
-                        <a href=""><%=item.country%>, <%=item.ganre%></a>
+                        <a>год: <%=item.year%></a>
+                        <a>продолжительность: <%=item.time%></a>
+                        <a href=""><%=item.country.name %>, <%=item.ganre.name%></a>
                         <button class="film-btn">
                             <img src="/images/icons/play.svg" alt="">
                             Смотреть

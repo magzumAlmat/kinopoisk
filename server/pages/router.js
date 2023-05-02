@@ -1,5 +1,5 @@
 const express =require('express')
-
+const app=express()
 const router= express.Router()
 
 const ganres=require('../Genres/Genres')
@@ -14,12 +14,12 @@ router.get('/',async(req,res) =>{
     const allGanres= await ganres.find()
     const allCountries= await country.find()
 
-    const films = await Film.find()
+    const films = await Film.find().populate('country').populate('ganre')
 
     const userr= await User.findById(req.params.id)
     res.render("index",
                             {films:films,
-                             ganres:allGanres,
+                             genres:allGanres,
                              country:allCountries,
                              user:req.user ? req.user:{}})
     //,loginUser:req.user
@@ -54,10 +54,10 @@ router.get('/profile/:id',async(req,res) =>{
 })
 
 router.get('/admin/:id', async (req,res) =>{
-    const films= await Film.find()
+    const films = await Film.find().populate('country').populate('ganre').populate('author')
     const allGanres=await ganres.find()
     const user = await User.findById(req.params.id)
-    res.render("AdminProfile",{films:films,user:req.user ? req.user:{},ganres:allGanres,loginUser:req.user })
+    res.render("AdminProfile",{films:films,user:req.user ? req.user:{},ganres:allGanres,loginUser:req.user})
 })
 
 
@@ -68,13 +68,34 @@ router.get('/addfilm',async(req,res) =>{
 })
 
 
-router.get('/editfilm',async(req,res) =>{
+router.get('/editfilm/:id',async(req,res) =>{
+    
     const allGanres=await ganres.find()
-    const allCountries=await counrty.find()
-    res.render("EditFilm",{ganres:allGanres,country:allCountries})
+    const user = await User.findById(req.params.id)
+    const allCountries=await country.find()
+    const films= await Film.findById(req.params.id)
+    console.log('req.body=  ',req.body)
+    res.render("EditFilm",{films:films,ganres:allGanres,country:allCountries,user:req.user ? req.user:{}})
 })
-
-
+// router.post('/api/deletefilm/', filmController.deleteFilm);
+router.post('/deletefilm/:id', async(req, res) => {
+//     console.log('DELETE APP')
+//     const id = req.params.id;
+//     Film.findByIdAndDelete(id, (err) => {
+//       if (err) {
+//         console.log(err);
+//         res.send('Error deleting book');
+//       } else {
+//         res.redirect('/admin/'+req.user.id)
+//       }
+//     });
+//   });
+    const user = await User.findById(req.params.id)
+    const allCountries=await country.find()
+    const films= await Film.findById(req.params.id)
+    console.log('req.body=  ',req.body)
+    res.render("DeleteFilm",{films:films,country:allCountries,user:req.user ? req.user:{}})
+})
 
 router.get('/not-found',(req,res)=>{
     res.render('not FOUND')

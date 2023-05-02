@@ -1,83 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <%- include('partials/Head.ejs') %>
-    <title>Document</title>
-</head>
-<body>
-    <%- include('partials/Header.ejs') %>
-    <div id="container">
-        <div id="main">
-            <form action="" class="form">
-           <h3>Редактировать фильм</h3>
+    <head>
+        <%- include('partials/Head.ejs') %>
+        <title>Document</title>
+    </head>
+    <body>
+        <%- include('partials/Header.ejs') %>
+        <div id="container">
+            <div id="main">
+                <form action="/api/editfilm/"  method="POST"  enctype="multipart/form-data" class="form">
 
-           <fieldset class="fieldset">
-            <label for="">Выберите постер для фильма</label>
-            <input type="file"  name="film-img">
-        </fieldset>
+                    <h3>Редактировать фильм</h3>
 
-                <fieldset class="fieldset">
-                    <label for="">Название фильма на русском</label>
-                    <input type="text" placeholder="Введите название фильма на русском" name="name-rus">
-                </fieldset>
+                    <fieldset class="fieldset">
+                       
+                        <input type="hidden" value="<%=films._id%>" name="id">
+                    </fieldset>
 
-                <fieldset class="fieldset">
-                    <label for="">Название фильма на английском</label>
-                    <input type="text" placeholder="ВНазвание фильма на английском" name="name-eng">
-                </fieldset>
+                    <fieldset class="fieldset">
+                        <label for="">Выберите постер для фильма</label>
+                        <input type="file" name="image">
+                    </fieldset>
 
+                    <fieldset class="fieldset">
+                        <label for="">Название фильма на русском</label>
+                        <input value=" <%=films.titleRus%>" type="text" placeholder="Введите название фильма на русском" name='titleRus'>
+                    </fieldset>
 
-                <fieldset class="fieldset">
-                    <label for="">Введите год выпуска</label>
-                    <input type="number" placeholder="Введите год выпуска" name="year">
-                </fieldset>
-
-
-                <fieldset class="fieldset">
-                    <label for="">Дительность фильма в минутах</label>
-                    <input type="number" placeholder="Введите длительность " name="time">
-                </fieldset>
-                
-
-                <fieldset class="fieldset">
-                    <label for="">Дительность фильма в минутах</label>
-                    <input type="number" placeholder="Введите длительность " name="time">
-                </fieldset>
+                    <fieldset class="fieldset">
+                        <label for="">Название фильма на английском</label>
+                        <input value=" <%=films.titleEng%>" type="text" placeholder="ВНазвание фильма на английском" name="titleEng">
+                    </fieldset>
 
 
-                <fieldset class="fieldset">
-                    <label for="">Жанр фильма</label>
-                    <select name="ganre" id="">
-                        <% ganres.forEach(ganre => {%>
+                    <fieldset class="fieldset">
+                        <label for="">Введите год выпуска</label>
+                        <input value=" <%=films.year%>" type="text" placeholder="Введите год выпуска" name="year">
+                    </fieldset>
+
+
+                    <fieldset class="fieldset">
+                        <label for="">Дительность фильма в минутах</label>
+                        <input value=" <%=films.time%>" type="text" placeholder="Введите длительность " name="time">
+                    </fieldset>
+
+
+                    <fieldset class="fieldset">
+                        <label for="">Cтрана производитель фильма</label>
+                       
+                        <select name="country" id="">
+                            <% 
+                                country.forEach(country => {
+                                    if(country.id==films.country) {
+                                        // console.log('selected= ',country.name)
+                            %>
+                                <option selected>
+                                    <%=country.name%>
+                                </option>
+                            <%  } else { %>
+                                <option>
+                                    <%=country.name%>
+                                </option>
+                            <%  }
+                                }); 
+                            %>
+                        </select>
+
+                    </fieldset>
+
+                    <fieldset class="fieldset">
+                        <label for="">Жанр фильма</label>
+                        <select name="ganre" id="">
+
+                        <%
+                         ganres.forEach(ganre => {
+                            if(ganre.id==films.ganre) {%>
+                        <%
+                        
+                        
+                        %>
+                            <option selected> <%=ganre.name%></option>
+                        <%
+                        }else{
+                        %>
                             <option><%=ganre.name%></option>
 
-                             <%
-                         }) %>
-                        
-                       
-                    </select>
-                </fieldset>
-
-                <fieldset class="fieldset">
-                    <label for="">Жанр фильма</label>
-                    <select name="ganre" id="">
-                        <% ganres.forEach(ganre => {%>
-                            <option><%=ganre.name%></option>
-                            
-                             <%
-                         }) %>
-                        
-                       
-                    </select>
-                </fieldset>
-               
-                <fieldset class="fieldset">
-                    <button type="submit">SAVE</button>
-                 </fieldset>
+                        %>
 
 
-            </form>
+                        <%   }} ); %>
+
+                        </select>
+                    </fieldset>
+
+                    <fieldset class="fieldset">
+                        <button type="submit">SAVE</button>
+                    </fieldset>
+
+
+                </form>
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>
