@@ -54,11 +54,11 @@
                                     if(country.id==films.country) {
                                         // console.log('selected= ',country.name)
                             %>
-                                <option selected>
+                                <option selected value="<%=country._id%>" >
                                     <%=country.name%>
                                 </option>
                             <%  } else { %>
-                                <option>
+                                <option value="<%=country._id%>">
                                     <%=country.name%>
                                 </option>
                             <%  }
@@ -79,11 +79,11 @@
                         
                         
                         %>
-                            <option selected> <%=ganre.name%></option>
+                            <option selected value="<%=ganre._id%>"> <%=ganre.name%></option>
                         <%
                         }else{
                         %>
-                            <option><%=ganre.name%></option>
+                            <option value="<%=ganre._id%>"><%=ganre.name%></option>
 
                         %>
 
