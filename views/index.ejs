@@ -57,7 +57,7 @@
                     <div class="film-rate">
                         <p>7.3</p>
                     </div>
-                    <button class="film-btn">
+                    <button class="film-btn" onClick="saveToWatch('<%=item._id%>')">
                         <img src="data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.667 8A1.333 1.333 0 1 1 2 8a1.333 1.333 0 0 1 2.667 0Zm4.666 0a1.333 1.333 0 1 1-2.666 0 1.333 1.333 0 0 1 2.666 0Zm3.334 1.333a1.333 1.333 0 1 0 0-2.666 1.333 1.333 0 0 0 0 2.666Z'/%3E %3C/svg%3E" alt="">
                     Буду Смотреть
                     </button>
@@ -71,6 +71,6 @@
         </div>
     </div>
        
-
+<script src="/js/saveFilm.js"></script>
     </body>
 </html>
