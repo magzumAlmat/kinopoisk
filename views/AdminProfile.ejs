@@ -69,7 +69,7 @@
                         
                 <%
                 films.forEach(item=>{
-                    console.log('item=   ',item)
+                    // console.log('item=   ',item)
             %>
                         <div class="main-card ">
                             <div class="card-left">
@@ -78,11 +78,14 @@
                                 </div>
                                 <div class="film-info">
                           
-                                    <a><%=item.titleRus%></a>
-                                    <a><%=item.year%></a>
-                                    <a><%=item.time%></a>
-                                    <a href=""><%=item.country.name%>, <%=item.ganre.name%></a>
-                                    <a href="">Автор: <%=item.author.full_name%></a>
+                                    <a>Наименование :<%=item.titleRus%></a>
+                                    <a>Год выпуска :<%=item.year%></a>
+                                    <a>Продолжительность :<%=item.time%></a>
+                                    <a href="" style="text-decoration: none;color:black">Страна производитель: <%=item.country.name%></a>
+                                    <a href="" style="text-decoration: none;color:black">Жанр: <%=item.ganre.name%></a>
+                                    <a href="" style="text-decoration: none;color:black">Автор: <%=item.author.full_name%></a>
+                                   <br>
+                                   
                                     <button class="film-btn">
                                         <img src="/images/icons/play.svg" alt="">
                                         Смотреть

@@ -49,11 +49,6 @@ const editFilm=async(req,res)=>{
         req.body.country.length>2 && 
         req.body.ganre.length>0 )
         {
-             console.log('req.file = ',req.file)
-            console.log('req.user._id= ',req.user._id)
-            console.log('req.body=== ',req.body)
-       
-
             const films= await Film.findById(req.body.id)
             console.log('films= ',films)
             fs.unlinkSync(path.join(__dirname+'../../../public'+films.image))
@@ -67,17 +62,10 @@ const editFilm=async(req,res)=>{
             films.image=`/images/films/${req.file.filename}`,
             films.author=req.user._id
             films.save()
-            res.redirect('/admin/'+req.user.id)
-           
-           
+            res.redirect('/admin/'+req.user.id)  
         }
-
-
-
-
     else{
         res.redirect(`/editfilm/${req.body.id}?error=1`)
-
     }
 }
 
