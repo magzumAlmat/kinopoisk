@@ -3,75 +3,89 @@
     <head>
         <%- include('partials/Head.ejs') %>
         <title>Document</title>
-        
+
     </head>
     <body>
         <%- include('partials/Header.ejs') %>
 
-    <div class="container">
-        <div class="main">
-          <div class="categories">
-            
-            <p><%=user%></p>
-            
-            
-            <% genres.forEach(ganre => {
+        <div class="container">
+            <div class="main">
+                <div class="categories">
+
+                   
+
+
+                    <% genres.forEach(ganre => {
                 // console.log('ganre= ',ganre.name)
 
                 %>
-               <a href="/<%=ganre.key%>"><%=ganre.name%></a>
+                    <a href="/<%=ganre.key%>"><%=ganre.name%></a>
                 <%
             }) %>
-           
-          </div>
-          <div class="main-content">
-            <h3>Фильмы и сериалы</h3>
-            
+
+            </div>
+            <div class="main-content">
+                <h3>Фильмы и сериалы</h3>
+
                 <%
                     films.forEach(item=>{
-                        console.log('item=   ',item)
+                        // console.log('item=   ',item)
  
                 %>
-          
-     
-                <div class="main-card">
-                <div class="card-left">
-                    <div class='film-img'>
-                        <img src="<%=item.image%>" alt="cc"/>
-                    </div>
-                    <div class="film-info">
-              
-                        <a><%=item.titleRus%></a>
-                        <a>год: <%=item.year%></a>
-                        <a>продолжительность: <%=item.time%></a>
-                        <a href=""><%=item.country.name %>, <%=item.ganre.name%></a>
-                        <button class="film-btn">
-                            <img src="/images/icons/play.svg" alt="">
-                            Смотреть
-                        </button>
-                    
-                        
-                    </div>
-                </div>
 
-                <div class="card-right">
-                    <div class="film-rate">
-                        <p>7.3</p>
+
+                <div class="main-card">
+                    <div class="card-left">
+                        <div class='film-img'>
+                            <img src="<%=item.image%>" alt="cc"/>
+                        </div>
+                        <div class="film-info">
+
+                            <a><%=item.titleRus%></a>
+                            <a>год:
+                                <%=item.year%></a>
+                            <a>продолжительность:
+                                <%=item.time%></a>
+                            <a href=""><%=item.country.name %>,
+                                <%=item.ganre.name%></a>
+                            <button class="film-btn">
+                                <img src="/images/icons/play.svg" alt="">
+                                Смотреть
+                            </button>
+
+
+                        </div>
                     </div>
-                    <button class="film-btn" onClick="saveToWatch('<%=item._id%>')">
-                        <img src="data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.667 8A1.333 1.333 0 1 1 2 8a1.333 1.333 0 0 1 2.667 0Zm4.666 0a1.333 1.333 0 1 1-2.666 0 1.333 1.333 0 0 1 2.666 0Zm3.334 1.333a1.333 1.333 0 1 0 0-2.666 1.333 1.333 0 0 0 0 2.666Z'/%3E %3C/svg%3E" alt="">
-                    Буду Смотреть
-                    </button>
+
+                    <div class="card-right">
+                        <div class="film-rate">
+                            <p>7.3</p>
+                        </div>
+                        <%if(user.toWatch && user.toWatch.includes(item._id)){
+                    %>
+                            <button class="film-btn" onclick="saveToWatch('<%=item._id%>')">
+
+                                <img src="/images/saved.png">
+                                Сохранено
+                            </button>
+
+                        <%}else{ %>
+                            <button class="film-btn" onclick="saveToWatch('<%=item._id%>')">
+
+                                <img src="data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.667 8A1.333 1.333 0 1 1 2 8a1.333 1.333 0 0 1 2.667 0Zm4.666 0a1.333 1.333 0 1 1-2.666 0 1.333 1.333 0 0 1 2.666 0Zm3.334 1.333a1.333 1.333 0 1 0 0-2.666 1.333 1.333 0 0 0 0 2.666Z'/%3E %3C/svg%3E" alt="">
+                                Буду смотреть
+                            </button>
+
+
+                        <%}%>
+
+                    </div>
                 </div>
-            </div>
 
             <%     
                 })
             %>
-          </div>
         </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>       
-<script src="/js/saveFilm.js"></script>
     </body>
-</html>
+</html></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="/js/saveFilm.js"></script></body></html>
+
