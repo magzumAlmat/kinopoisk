@@ -17,11 +17,15 @@ router.get('/',async(req,res) =>{
     const films = await Film.find().populate('country').populate('ganre')
 
     const userr= await User.findById(req.params.id)
+    
     res.render("index",
                             {films:films,
                              genres:allGanres,
                              country:allCountries,
-                             user:req.user ? req.user:{}})
+                             user:req.user ? req.user:{},
+                             loginUser:req.user
+                                
+                            })
     //,loginUser:req.user
     // console.log('user= ',user)
 })
@@ -35,18 +39,20 @@ router.get('/login',async (req,res) =>{
 })
 
 
-router.get('/register',(req,res) =>{
-    res.render("Register")
+router.get('/register',async(req,res) =>{
+    const userr= await User.findById(req.params.id)
+    res.render("Register",{user:req.user ? req.user:{}})
 })
 
 router.get('/profile/:id',async(req,res) =>{
     const allGanres=await ganres.find()
     const allCountries=await country.find()
-    const user = await User.findById(req.params.id)
+    const user = await User.findById(req.params.id).populate('toWatch').populate({path:'toWatch',populate:{path:'country'}}).populate({path:'toWatch',populate:{path:'ganre'}})
     // res.render("Profile",{ganres:allGanres,counrty:allCountries,user:req.user.id})
+    const films = await Film.find().populate('country').populate('ganre').populate('author')
     
     if(user){
-        res.render('Profile',{user:req.user ? req.user:{},ganres:allGanres,loginUser:req.user })
+        res.render('Profile',{userr:user,user:req.user ? req.user:{},ganres:allGanres,loginUser:req.user,films:films })
     }else{
         res.redirect('/not-found')
     }

@@ -4,16 +4,17 @@ const session=require('express-session')
 const mongooseStore=require('connect-mongo')
 const passport=require('passport')
 
-const logger = require('morgan')
+const logger = require('morgan');
+
 const app=express();
 
-
+app.use(express.json());
 require('./server/config/db')
 require('./server/config/passport')
 
 app.use(logger('dev'))              //Логер для вывода  в терминал
 app.use(express.static(__dirname+'/public'))       // ищет статические файлы
-app.use(express.json());
+
 app.use(express.urlencoded({                                      //создается req.body и туда заливаются данные с формы через метод post 
   extended: true
 }));

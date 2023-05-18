@@ -8,23 +8,15 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 90px;
-
-
 }
-
 
 .profile-img{
     width: 15%;
-    
 }
-
 
 .profile-img img{
     width: 100%;
- 
-
 }
-
 
 .profile-info {
     width: 80%;
@@ -33,14 +25,11 @@
 .profile-info p{
     font-size: 16px;
     margin-bottom: 70px;
-
 }
-
 
 .profile-info p span{
     font-weight: 600;
 }
-
 
 .edit-btn {
     padding: 5px 20px;
@@ -64,4 +53,3 @@
     font-weight: 600;
     font-size: 16px;
 }
-

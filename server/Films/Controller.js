@@ -1,9 +1,9 @@
 const Film=require('./Film')
 const fs=require('fs')
 const path=require('path')
+const User =require('../auth/User')
 
 const createFilm=async(req,res) => {
-  
     
     if (
         // req.file.length > 2 &&
@@ -34,8 +34,6 @@ const createFilm=async(req,res) => {
     }
     console.log('req.body.film = ',req.body.film)
 }
-
-
 
 
 const editFilm=async(req,res)=>{
@@ -83,4 +81,28 @@ const deleteFilm=async(req,res)=>{
   }
 }
 
-module.exports={createFilm,editFilm,deleteFilm}
+
+
+
+const saveFilm=async(req,res)=>{
+    if(req.user&&req.body.id){
+        // console.log(req.user,' -- ',req.body.id)
+        const user=await User.findById(req.user.id)
+        console.log('this is user=', user)
+        const findFilm=user.toWatch.filter(item => item._id == req.body.id)
+
+        if (findFilm.length==0){
+            user.toWatch.push(req.body.id);
+            user.save()
+            res.send('Фильм добавлен!')
+        }else{
+            res.send('Фильм уже присутствует в списке!')
+        }
+        
+    }
+    
+    // console.log('in Controller save film function ',req.body)
+
+}
+
+module.exports={createFilm,saveFilm,editFilm,deleteFilm}

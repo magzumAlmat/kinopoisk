@@ -5,8 +5,8 @@ const UserSchema= new mongoose.Schema({
     full_name:String,
     password:String,
     isAdmin:Boolean,
-    toWatch:{type:Schema.Types.ObjectId,ref: "film"},
-    watched:{type:Schema.Types.ObjectId,ref: "film"},
+    toWatch:[{type:Schema.Types.ObjectId,ref: "film"}],
+    watched:[{type:Schema.Types.ObjectId,ref: "film"}],    
 })
 
 

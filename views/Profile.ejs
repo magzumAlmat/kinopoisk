@@ -66,43 +66,66 @@
                         
                         
                         <h3>Saved Films</h3>
-                        <div class="main-card ">
-                            <div class="card-left">
-                                <div class='film-img'>
-                                    <img src="/images/films/film1.webp" alt="cc"/>
-                                </div>
-                                <div class="film-info">
-                                    <a>Все везде и сразу</a>
-                                    <a>Everything Everywhere All at Once, 2021, 139  мин</a>
-                                    <a href="">США, фантастика</a>
-                                    <button class="film-btn">
-                                        <img src="/images/icons/play.svg" alt="">
-
-                                        Смотреть
-                                    </button>
-
-
-                                </div>
-                            </div>
+                        <%
+                        // films.forEach(item=>{
+                        //      console.log('item=   ',item)
+                        // %>
+                        
+                        <%
+                        if(userr.toWatch.length > 0){
+                            userr.toWatch.forEach(film=>{
+                                console.log('this is film= ',film)
+                         %>
+                                <div class="main-card ">
+                                    <div class="card-left">
+                                        <div class='film-img'>
+                                            <img src="<%=film.image%>" alt="cc"/>
+                                        </div>
+                                        <div class="film-info">
+                                
+                                            <a>Наименование :<%=film.titleRus%></a>
+                                            <a>Год выпуска :<%=film.year%></a>
+                                            <a>Продолжительность :<%=film.time%></a>
+                                            <a href="" style="text-decoration: none;color:black">Страна производитель: <%=film.country.name%></a>
+                                            <a href="" style="text-decoration: none;color:black">Жанр: <%=film.ganre.name%></a>
+                                            
+                                        <br>
+                                        
+                                            <button class="film-btn">
+                                                <img src="/images/icons/play.svg" alt="">
+                                                Смотреть
+                                            </button>
+                                        </div>
+                                    </div>
 
                             <div class="card-right">
                                 <div class="film-rate">
                                     <p>7.3</p>
                                 </div>
-                                <button class="film-btn">
-                                    <img src="data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.667 8A1.333 1.333 0 1 1 2 8a1.333 1.333 0 0 1 2.667 0Zm4.666 0a1.333 1.333 0 1 1-2.666 0 1.333 1.333 0 0 1 2.666 0Zm3.334 1.333a1.333 1.333 0 1 0 0-2.666 1.333 1.333 0 0 0 0 2.666Z'/%3E %3C/svg%3E" alt="">
-                                    Буду Смотреть
+                                <button class="film-btn" onClick="saveToWatch('<%=film._id%>')">
+                                     <img src="/images/saved.png">
+                                        Сохранено
                                 </button>
                             </div>
-                        </div>
+
+                                </div>
+                        
+
+                        <%
+                    })
+                    }
+                        %>
+                        ----------------------------------------------------------------------item---------------
+            
+              
 
 
                     </div>
                 </div>
             </div>
         </div>
-
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="/js/saveFilm.js"></script>
     </body>
 </html>
 

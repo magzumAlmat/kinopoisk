@@ -1,6 +1,6 @@
 const isAuth=(req,res,next)=>{
     // console.log('req.user',req)
-    if(req.user && req.user.isAdmin){
+    if(req.user){
         next()
     }
     else{
