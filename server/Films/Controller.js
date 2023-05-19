@@ -12,7 +12,9 @@ const createFilm=async(req,res) => {
         req.body.year.length>0 && 
         req.body.time.length>0 && 
         req.body.country.length>2 && 
-        req.body.ganre.length>2)
+        req.body.ganre.length>2&& 
+        req.body.video.length>2
+        )
     {
         console.log(' if idet po vetke true ', req.file)
         await new Film({
@@ -22,6 +24,7 @@ const createFilm=async(req,res) => {
             time:req.body.time,
             country:req.body.country,
             ganre:req.body.ganre,
+            video:req.body.video,
             image:`/images/films/${req.file.filename}`,
             author:req.user._id,
             // image:`${req.file.destination}/${req.file.filename}`,
@@ -45,7 +48,8 @@ const editFilm=async(req,res)=>{
         req.body.year.length>0 && 
         req.body.time.length>0 && 
         req.body.country.length>2 && 
-        req.body.ganre.length>0 )
+        req.body.ganre.length>0&& 
+        req.body.video.length>2)
         {
             const films= await Film.findById(req.body.id)
             console.log('films= ',films)
@@ -57,6 +61,8 @@ const editFilm=async(req,res)=>{
             films.time =req.body.time,
             films.country =req.body.country,
             films.ganre=req.body.ganre,
+            films.video=req.body.video,
+            
             films.image=`/images/films/${req.file.filename}`,
             films.author=req.user._id
             films.save()
@@ -105,4 +111,26 @@ const saveFilm=async(req,res)=>{
 
 }
 
-module.exports={createFilm,saveFilm,editFilm,deleteFilm}
+
+
+
+const deleteFromToWatch=async(req,res)=>{
+    if(req.user&&req.params.id){
+        // console.log(req.user,' -- ',req.body.id)
+        const user=await User.findById(req.user.id)
+        console.log('req params id= ',req.params.id)
+        for(let i=0;i<user.toWatch.length;i++){
+            if(user.toWatch[i]==req.params.id){
+                user.toWatch.splice(i,1)
+                user.save()
+                res.send('Successfully deleted')
+            }
+        }
+        // res.send('not found')
+    }
+    
+    // console.log('in Controller save film function ',req.body)
+
+}
+
+module.exports={createFilm,saveFilm,editFilm,deleteFilm,deleteFromToWatch}

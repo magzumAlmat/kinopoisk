@@ -11,6 +11,7 @@ const User=require('../auth/User')
 const Film=require('../Films/Film')
 
 router.get('/',async(req,res) =>{
+    console.log(req.query)
     const allGanres= await ganres.find()
     const allCountries= await country.find()
 
@@ -106,4 +107,32 @@ router.post('/deletefilm/:id', async(req, res) => {
 router.get('/not-found',(req,res)=>{
     res.render('not FOUND')
 })
+
+// router.get('/detail/:id',async (req,res)=>{
+//     const allGanres= await ganres.find()
+//     const allCountries= await country.find()
+
+//     const films = await Film.find().populate('country').populate('ganre')
+
+//     const userr= await User.findById(req.params.id)
+    
+//     res.render("detail",
+//                             {film:films,
+//                              genres:allGanres,
+//                              country:allCountries,
+//                              user:req.user ? req.user:{},
+//                              loginUser:req.user
+                                
+//                             })
+// })
+
+
+router.get('/detail/:id', async(req, res) =>{
+    const film = await Film.findById(req.params.id).populate('country').populate('ganre')
+    res.render("detail", {user: req.user ? req.user: {}, film: film})
+})
+
+
+
+
 module.exports=router

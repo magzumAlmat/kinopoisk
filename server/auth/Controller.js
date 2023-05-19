@@ -34,7 +34,6 @@ const signUp = async(req, res) => {
     
   }
 
-
 const signIn = async(req,res)=>{
   if (req.user.isAdmin){
     res.redirect(`/admin/${req.user._id}`)

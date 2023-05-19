@@ -7,12 +7,13 @@ const {deleteFilm}=require('./Controller')
 const {isAuth}=require('../auth/middlewares')
 const {saveFilm} =require('./Controller')
 const {isAdmin}=require('../auth/middlewaresIsAdmin')
+const {deleteFromToWatch} =require('./Controller')
 router.post('/api/addFilm/',isAdmin,upload.single('image'),createFilm)
 router.post('/api/editfilm/',isAdmin,upload.single('image'),editFilm)
 router.post('/api/deletefilm/',isAdmin,deleteFilm)
 
 router.post('/api/films/save',isAuth,saveFilm)
-
+router.delete('/api/films/save/:id',isAuth,deleteFromToWatch)
 
 module.exports=router
 

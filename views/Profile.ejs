@@ -12,11 +12,11 @@
             <div class="main">
                 <div class="categories">
                     <% ganres.forEach(ganre => {%>
-                       <a href="/<%=ganre.key%>"><%=ganre.name%></a>
-                        <%
+                        <a href="/<%=ganre.key%>"><%=ganre.name%></a>
+                    <%
                     }) %>
-                   
-                  </div>
+
+                </div>
                 <div class="main-content">
                     <h3>Профиль</h3>
 
@@ -27,34 +27,32 @@
 
                             <div id="profile-img">
                                 <img src="/images/films/avatarProfile.jpeg" alt="" style="width: 66%;
-                                border-radius: 60%;
-                                border: 1px solid;">
+                                                                border-radius: 60%;
+                                                                border: 1px solid;">
                             </div>
 
                             <div id="profile-info">
-                                
                                 <p>
                                     <span>Полное имя:</span>
                                     <%=user.full_name %></p>
                                 <p>
                                     <span>Email:
-                                    </span><%=user.email %></p>
-                                    <br><br>
+                                    </span>
+                                    <%=user.email %></p>
+                                <br><br>
                                 <%
                                     if(loginUser.id == user.id){                               
                                 %>
 
-                                <a class="edit-btn">
-                                    Редактировать профиль
-                                </a>
-                                <br><br>
-                                <a class="edit-btn" href="/api/signout">
-                                    Выход
-                                </a>
-
-
+                                    <a class="edit-btn">
+                                        Редактировать профиль
+                                    </a>
+                                    <br><br>
+                                    <a class="edit-btn" href="/api/signout">
+                                        Выход
+                                    </a>
                                 <% }%>
-                               
+
                             </div>
                         </div>
 
@@ -63,59 +61,57 @@
 
                         <br>
 
-                        
-                        
+
                         <h3>Saved Films</h3>
                         <%
                         // films.forEach(item=>{
                         //      console.log('item=   ',item)
                         // %>
-                        
+
                         <%
                         if(userr.toWatch.length > 0){
                             userr.toWatch.forEach(film=>{
                                 console.log('this is film= ',film)
                          %>
-                                <div class="main-card ">
-                                    <div class="card-left">
-                                        <div class='film-img'>
-                                            <img src="<%=film.image%>" alt="cc"/>
-                                        </div>
-                                        <div class="film-info">
-                                
-                                            <a>Наименование :<%=film.titleRus%></a>
-                                            <a>Год выпуска :<%=film.year%></a>
-                                            <a>Продолжительность :<%=film.time%></a>
-                                            <a href="" style="text-decoration: none;color:black">Страна производитель: <%=film.country.name%></a>
-                                            <a href="" style="text-decoration: none;color:black">Жанр: <%=film.ganre.name%></a>
-                                            
-                                        <br>
-                                        
-                                            <button class="film-btn">
-                                                <img src="/images/icons/play.svg" alt="">
-                                                Смотреть
-                                            </button>
-                                        </div>
+                            <div class="main-card ">
+                                <div class="card-left">
+                                    <div class='film-img'>
+                                        <img src="<%=film.image%>" alt="cc"/>
                                     </div>
+                                    <div class="film-info">
+                                        <a>Наименование :<%=film.titleRus%></a>
+                                        <a>Год выпуска :<%=film.year%></a>
+                                        <a>Продолжительность :<%=film.time%></a>
+                                        <a href="" style="text-decoration: none;color:black">Страна производитель:
+                                            <%=film.country.name%></a>
+                                        <a href="" style="text-decoration: none;color:black">Жанр:
+                                            <%=film.ganre.name%></a>
+                                        <br>
 
-                            <div class="card-right">
-                                <div class="film-rate">
-                                    <p>7.3</p>
+                                        <button class="film-btn">
+                                            <img src="/images/icons/play.svg" alt="">
+                                            Смотреть
+                                        </button>
+                                    </div>
                                 </div>
-                                <button class="film-btn" onClick="saveToWatch('<%=film._id%>')">
-                                     <img src="/images/saved.png">
+
+                                <div class="card-right">
+                                    <div class="film-rate">
+                                        <p>7.3</p>
+                                    </div>
+                                    <button class="film-btn" onclick="saveToWatch('<%=film._id%>')">
+                                        <img src="/images/saved.png">
                                         Сохранено
-                                </button>
+                                    </button>
+                                </div>
+
                             </div>
 
-                                </div>
-                        
 
                         <%
                     })
                     }
                         %>
-                   
 
 
                     </div>

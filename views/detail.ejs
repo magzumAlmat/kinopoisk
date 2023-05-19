@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('partials/Head.ejs') %>
+        <title>Document</title>
+    </head>
+    <body>
+        <%- include('partials/Header.ejs') %>
+        <div class="container">
+            <div class="main">
+                <div class="film-image">
+                    <!-- <img src="/images/films/mqdefault.jpg" alt="" > -->
+                    <img src="<%=film.image%>" alt="">
+                </div>
+             
+                    <div class="film-info-detail">
+                        <h2><%=film.titleRus%>(<%=film.year%>)</h2>
+                        <p><%=film.titleEng%></p>
+
+                        <h1>данные с Юзера <%=user.toWatch%></h1>
+                        <h1>айди фильма <%=film._id%></h1>
+
+                        <% if(user.toWatch.includes(film._id)){%>
+                            <button class="film-btn" onclick="deleteFromToWatch('<%=film._id%>')">
+                                <img src="/images/saved.png" alt="">
+                                Сохранено
+                            </button>
+                        <% }else{%>
+                            <button class="film-btn" onclick="saveToWatch('<%=film._id%>')">
+                                <img src="data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.667 8A1.333 1.333 0 1 1 2 8a1.333 1.333 0 0 1 2.667 0Zm4.666 0a1.333 1.333 0 1 1-2.666 0 1.333 1.333 0 0 1 2.666 0Zm3.334 1.333a1.333 1.333 0 1 0 0-2.666 1.333 1.333 0 0 0 0 2.666Z'/%3E %3C/svg%3E" alt="">
+                                Буду смотреть
+                            </button>
+                        <% } %>
+                        
+                        <h4>О фильме</h4>
+                        <div class="film-details">
+                            <p>Дата изготовления</p>
+                            <p><%=film.year%></p>
+                        </div>
+                        <div class="film-details">
+                            <p>Страна изготовитель</p>
+                            <p><%=film.country.name%></p>
+                        </div>
+                        <div class="film-details">
+                            <p>Жанр</p>
+                            <p><%=film.ganre.name%></p>
+                        </div>
+                        <div class="film-details">
+                            <p>Продолжительность</p>
+                            <p><%=film.time%> мин</p>
+                        </div>
+                    </div>
+                </div>
+                <% if (film.video){
+                     %>
+                    <div class="film-player">
+                        <iframe width="560" height="315" src="<%=film.video%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                <%}%>
+                
+            </div>
+  
+     
+    </body>
+</html>
