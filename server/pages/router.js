@@ -19,6 +19,7 @@ router.get('/',async(req,res) =>{
     if(Ganres)
     {
         options.ganre=Ganres._id        //ganre потому что название таблицы такое
+        res.locals.Ganres = req.query.Ganres
     }
     
     let page=0
