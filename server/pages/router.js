@@ -11,11 +11,22 @@ const User=require('../auth/User')
 const Film=require('../Films/Film')
 
 router.get('/',async(req,res) =>{
-    console.log(req.query)
+    // console.log(req.query)
+    
+    const Ganres= await ganres.findOne({key:req.query.Ganres})
+    // console.log(Ganres._id)
+    console.log(Ganres)
+    const options={}
+    if(Ganres)
+    {
+        options.ganre=Ganres._id
+    }
+    
+    
     const allGanres= await ganres.find()
     const allCountries= await country.find()
 
-    const films = await Film.find().populate('country').populate('ganre')
+    const films = await Film.find(options).populate('country').populate('ganre')
 
     const userr= await User.findById(req.params.id)
     
