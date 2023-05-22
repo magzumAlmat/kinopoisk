@@ -8,7 +8,7 @@ function saveToWatch(id){
 }
 
 function deleteFromToWatch(id){
-   console.log('deleteFromToWatch id= '.id)
+   // console.log('deleteFromToWatch id= '.id)
    axios.delete(`/api/films/save/${id}`).then(data=>{
       if(data.status==200){
          alert(data.data);
