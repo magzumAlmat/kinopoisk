@@ -12,21 +12,30 @@ const Film=require('../Films/Film')
 
 router.get('/',async(req,res) =>{
     // console.log(req.query)
-    
     const Ganres= await ganres.findOne({key:req.query.Ganres})
     // console.log(Ganres._id)
-    console.log(Ganres)
+    // console.log(Ganres)
     const options={}
     if(Ganres)
     {
-        options.ganre=Ganres._id
+        options.ganre=Ganres._id        //ganre потому что название таблицы такое
     }
     
+    let page=0
+    const limit=3
+
+    if(req.query.page && req.query.page>0){
+        page=req.query.page  
+    }
+
     
+    const totalFilms= await Film.count()
+
+
     const allGanres= await ganres.find()
     const allCountries= await country.find()
 
-    const films = await Film.find(options).populate('country').populate('ganre')
+    const films = await Film.find(options).limit(limit).skip(page*limit).populate('country').populate('ganre')
 
     const userr= await User.findById(req.params.id)
     
@@ -35,7 +44,8 @@ router.get('/',async(req,res) =>{
                              genres:allGanres,
                              country:allCountries,
                              user:req.user ? req.user:{},
-                             loginUser:req.user
+                             loginUser:req.user,
+                             pages:Math.ceil(totalFilms/limit)
                                 
                             })
     //,loginUser:req.user
