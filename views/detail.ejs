@@ -17,10 +17,9 @@
                         <h2><%=film.titleRus%>(<%=film.year%>)</h2>
                         <p><%=film.titleEng%></p>
 
-                        <h1>данные с Юзера <%=user.toWatch%></h1>
-                        <h1>айди фильма<%=film._id%></h1>  
 
-                        <% if(user.toWatch.includes(film._id)){%>
+
+                        <% if(user&& user.toWatch && user.toWatch.includes(film._id)){%>
                             <button class="film-btn" onclick="deleteFromToWatch('<%=film._id%>')">
                                 <img src="/images/saved.png" alt="">
                                 Сохранено
@@ -58,11 +57,84 @@
                     </div>
                 <%}%>
                 
+                <br><br><br>
+
+
+
+
+                <div class="comments">
+                <h3>Комментарии</h3>
+                <% if(user && user._id){%>
+                <form   class="add-comment-form" onSubmit="sendRate(event)">
+                    <p>Оцените фильм</p>
+                    <div class="comment-stars">
+                        <img  onclick='rateFilm(1)' src="/images/star.png" alt="" width="20" height="30">
+                        <img onclick='rateFilm(2)' src="/images/star.png" alt="" width="20" height="30">
+                        <img onclick='rateFilm(3)' src="/images/star.png" alt="" width="20" height="30">
+                        <img onclick='rateFilm(4)' src="/images/star.png" alt="" width="20" height="30">
+                        <img onclick='rateFilm(5)' src="/images/star.png" alt="" width="20" height="30">
+                    </div>
+                    <p>Напишите комментарии</p>
+                    <textarea id="comment-text"></textarea>
+                    <input type="hidden" value="<%= user._id%>" id="comment_author">
+                    <input type="hidden" value="<%= film._id%>" id="comment_film">
+                    <button type="submit">Сохранить</button>
+                </form>
+                <% }else{ %>
+                    <p>
+                        <a href="/login">Войдите</a>
+                        или
+                        <a href="/register">Зарегистрируйтесь</a>,
+                        чтобы оставить комментарии
+                    </p>
+                <% } %>
+
+
+ 
+                <% 
+                    if(rates){
+                        
+                        rates.forEach(rate =>{
+                        // console.log(rate)
+                %>
+                    <div class="comment">
+                        <p>Автор: 
+                            <a href=""><%=rate.authorId.full_name%></a>    
+                        </p>
+                        <div class="comment-stars">
+                            <%
+                                for(let i = 0; i < 5; i++){
+                                    if(i < rate.rate){
+                                        console.log('this is i= ',i)
+                            %>
+                                        <img style="filter:grayscale(0%)" src="/images/star.png" alt="">
+                            <%
+                                    }else{
+                            %>
+                                        <img src="/images/star.png" alt="">
+                            <%
+                                    }
+                                }
+                            %>
+                        </div>
+                        <% if(rate.text.length > 0){%>
+                        <p>Комментарии: <%= rate.text %></p>
+                        <% } %>
+                    </div>
+                <%
+                        })
+                    }
+                %>
+            </div>
+
+
             </div>
   
             <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             
             <script src="/js/saveFilm.js"></script>
+            <script src="/js/rateFilm.js"></script>
+           
      
     </body>
   

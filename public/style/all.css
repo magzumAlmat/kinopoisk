@@ -6,4 +6,5 @@
 @import url('components/Form.css');
 @import url('pages/profile.css');
 @import url('pages/admin.css');
-@import url('pages/detail.css')
+@import url('pages/detail.css');
+@import url('components/comments.css')

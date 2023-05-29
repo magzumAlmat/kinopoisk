@@ -1,0 +1,50 @@
+.comment{
+    margin: 20px 0;
+    border: 1px solid #858484;
+    border-radius: 10px;
+    padding: 15px;
+}
+.comment a{
+    text-decoration: none;
+}
+
+
+.comments h3{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.comment-stars{
+    display: flex;
+    gap:10px;
+}
+
+
+.comment-stars img{
+    width: 30px;
+    filter:grayscale(100%);
+    z-index: 0;
+}
+
+
+.add-comment-form{
+    margin-top: 30px;
+
+}
+
+.add-comment-form textarea{
+    width: 100%;
+    resize: none;
+    height: 100px;
+    margin-top: 10px;
+}
+
+
+.add-comment-form p{
+    margin: 10px  0;
+    
+}
+
+.active-star{
+    filter:grayscale(0%)
+}

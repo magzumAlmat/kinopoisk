@@ -45,6 +45,8 @@ app.use(require('./server/Country/router'))
 
 app.use(require('./server/Films/router'))
 
+app.use(require('./server/Rates/router'))
+
 const PORT=8000
 
 

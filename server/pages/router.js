@@ -10,6 +10,7 @@ const User=require('../auth/User')
 
 const Film=require('../Films/Film')
 
+const Rate=require('../Rates/Rates')
 router.get('/',async(req,res) =>{
     // console.log(req.query)
     const Ganres= await ganres.findOne({key:req.query.Ganres})
@@ -162,8 +163,15 @@ router.get('/not-found',(req,res)=>{
 
 
 router.get('/detail/:id', async(req, res) =>{
+    
+   
+    const rates=await Rate.find({filmId:req.params.id}).populate('authorId')
+    let averageRate = 0;
+    for(let i = 0; i < rates.length; i++){
+        averageRate += rates[i].rate
+    }
     const film = await Film.findById(req.params.id).populate('country').populate('ganre')
-    res.render("detail", {user: req.user ? req.user: {}, film: film})
+    res.render("detail", {user: req.user ? req.user: {}, film: film,rates:rates,averageRate: (averageRate / rates.length).toFixed(1)})
 })
 
 
