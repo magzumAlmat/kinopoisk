@@ -69,12 +69,33 @@
                        
                     </select>
                 </fieldset>
-
+                
                 <fieldset class="fieldset">
+                    <label for="">Выберите жанр</label>
+                    <select name="genre" id="">
+                        <%
+                            ganres.forEach(genre =>{
+                        %>
+                        <option value="<%=genre._id%>"><%=genre.name%></option>
+                        <%
+                            })
+                        %>
+                    </select>
+                </fieldset>
+                <a class="addSeriesBtn" id="addSeriesBtn" onclick="addSeries()">Добавить серии</a>
+                <a class="addSeriesBtn" id="addFilmUrlBtn" onclick="addFilmUrl()">Добавить ссылку на фильм</a>
+                <div id="urls"></div>
+                <fieldset class="fieldset">
+                    <button type="submit">Добавить</button>
+                </fieldset>
+
+
+
+                <!-- <fieldset class="fieldset">
                     <label for="">Введите ссылку на фильм</label>
                     <input type="text" placeholder="Введите ссылку на фильм" name="video">
                 </fieldset>
-               
+                -->
 
 
                 <fieldset class="fieldset">
@@ -86,5 +107,10 @@
             </form>
         </div>
     </div>
+
+    <script src="/js/serial.js">
+
+    </script>
+    
 </body>
 </html>

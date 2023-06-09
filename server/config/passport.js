@@ -1,6 +1,5 @@
 const passport= require('passport')
 const User=require('../auth/User')
-
 const bcrypt=require('bcrypt')
 const localStrategy=require('passport-local')
 const { serializeUser } = require('passport')

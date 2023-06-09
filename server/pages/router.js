@@ -12,11 +12,13 @@ const Film=require('../Films/Film')
 
 const Rate=require('../Rates/Rates')
 router.get('/',async(req,res) =>{
-    // console.log(req.query)
+
+    console.log('OuTPUT',req.query)
     const Ganres= await ganres.findOne({key:req.query.Ganres})
     // console.log(Ganres._id)
     // console.log(Ganres)
     const options={}
+    
     if(Ganres)
     {
         options.ganre=Ganres._id        //ganre потому что название таблицы такое
@@ -42,8 +44,12 @@ router.get('/',async(req,res) =>{
         res.locals.search = req.query.search
     }
 
+    // if (req.query.Categories){
+    //     options.category = Categories._id;
+    // }
     
-    const totalFilms= await Film.count()
+
+    const totalFilms= await Film.count(options)
 
 
     const allGanres= await ganres.find()
@@ -175,6 +181,6 @@ router.get('/detail/:id', async(req, res) =>{
 })
 
 
-
+// router.get('/addSerial',async())
 
 module.exports=router
