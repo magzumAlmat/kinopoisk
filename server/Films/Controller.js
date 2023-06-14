@@ -4,7 +4,7 @@ const path=require('path')
 const User =require('../auth/User')
 
 const createFilm=async(req,res) => {
-    
+    console.log('req body= ',req.body)
     if (
         // req.file.length > 2 &&
         req.body.titleRus.length>2 && 
@@ -12,24 +12,37 @@ const createFilm=async(req,res) => {
         req.body.year.length>0 && 
         req.body.time.length>0 && 
         req.body.country.length>2 && 
-        req.body.ganre.length>2&& 
-        req.body.video.length>2
+        req.body.genre.length>2
+     
         )
     {
         console.log(' if idet po vetke true ', req.file)
+        if(req.body.video && req.body.video.length > 2){
         await new Film({
             titleRus:req.body.titleRus,
             titleEng:req.body.titleEng,
             year:req.body.year,
             time:req.body.time,
             country:req.body.country,
-            ganre:req.body.ganre,
+            genre:req.body.genre,
             video:req.body.video,
             image:`/images/films/${req.file.filename}`,
             author:req.user._id,
             // image:`${req.file.destination}/${req.file.filename}`,
         }).save()
-
+        }else if(req.body.series && req.body.series.length > 0){
+            await new Film({
+                titleRus:req.body.titleRus,
+                titleEng:req.body.titleEng,
+                year:req.body.year,
+                time:req.body.time,
+                country:req.body.country,
+                genre:req.body.genre,
+                video:req.body.video,
+                image:`/images/films/${req.file.filename}`,
+                author:req.user._id
+            }).save()
+            }
         res.redirect(`/admin/${req.user._id}`)
     }else
     {

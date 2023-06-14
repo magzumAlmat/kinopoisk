@@ -21,7 +21,7 @@ router.get('/',async(req,res) =>{
     
     if(Ganres)
     {
-        options.ganre=Ganres._id        //ganre потому что название таблицы такое
+        options.genre=Ganres._id        //ganre потому что название таблицы такое
         res.locals.Ganres = req.query.Ganres
     }
     
@@ -52,16 +52,16 @@ router.get('/',async(req,res) =>{
     const totalFilms= await Film.count(options)
 
 
-    const allGanres= await ganres.find()
+    const genre= await ganres.find()
     const allCountries= await country.find()
 
-    const films = await Film.find(options).limit(limit).skip(page*limit).populate('country').populate('ganre')
+    const films = await Film.find(options).limit(limit).skip(page*limit).populate('country').populate('genre')
 
     const userr= await User.findById(req.params.id)
     
     res.render("index",
                             {films:films,
-                             genres:allGanres,
+                             genre,
                              country:allCountries,
                              user:req.user ? req.user:{},
                              loginUser:req.user,
@@ -92,7 +92,6 @@ router.get('/profile/:id',async(req,res) =>{
     const user = await User.findById(req.params.id).populate('toWatch').populate({path:'toWatch',populate:{path:'country'}}).populate({path:'toWatch',populate:{path:'ganre'}})
     // res.render("Profile",{ganres:allGanres,counrty:allCountries,user:req.user.id})
     const films = await Film.find().populate('country').populate('ganre').populate('author')
-    
     if(user){
         res.render('Profile',{userr:user,user:req.user ? req.user:{},ganres:allGanres,loginUser:req.user,films:films })
     }else{
@@ -102,7 +101,7 @@ router.get('/profile/:id',async(req,res) =>{
 })
 
 router.get('/admin/:id', async (req,res) =>{
-    const films = await Film.find().populate('country').populate('ganre').populate('author')
+    const films = await Film.find().populate('country').populate('genre').populate('author')
     const allGanres=await ganres.find()
     const user = await User.findById(req.params.id)
     res.render("AdminProfile",{films:films,user:req.user ? req.user:{},ganres:allGanres,loginUser:req.user})
@@ -176,7 +175,7 @@ router.get('/detail/:id', async(req, res) =>{
     for(let i = 0; i < rates.length; i++){
         averageRate += rates[i].rate
     }
-    const film = await Film.findById(req.params.id).populate('country').populate('ganre')
+    const film = await Film.findById(req.params.id).populate('country').populate('genre')
     res.render("detail", {user: req.user ? req.user: {}, film: film,rates:rates,averageRate: (averageRate / rates.length).toFixed(1)})
 })
 

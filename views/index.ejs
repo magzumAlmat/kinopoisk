@@ -11,7 +11,7 @@
         <div class="container">
             <div class="main">
                 <div class="categories">
-                    <% genres.forEach(ganre => {
+                    <% genre.forEach(ganre => {
                 // console.log('ganre= ',ganre.name)
 
                 %>
@@ -25,7 +25,7 @@
 
                 <%
                     films.forEach(item=>{
-                        // console.log('item=   ',item)
+                        console.log('index item=   ',item)
  
                 %>
 
@@ -43,7 +43,7 @@
                             <a href="/detail/<%=item._id%>">продолжительность:
                                 <%=item.time%></a>
                             <a href="/detail/<%=item._id%>"><%=item.country.name %>,
-                                <%=item.ganre.name%></a>
+                                <%=item.genre.name%></a>
                             <button class="film-btn">
                                 <img src="/images/icons/play.svg" alt="">
                                 Смотреть
