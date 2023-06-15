@@ -38,7 +38,7 @@ const createFilm=async(req,res) => {
                 time:req.body.time,
                 country:req.body.country,
                 genre:req.body.genre,
-                video:req.body.video,
+                series: req.body.series,
                 image:`/images/films/${req.file.filename}`,
                 author:req.user._id
             }).save()

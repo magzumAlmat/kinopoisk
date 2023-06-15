@@ -11,6 +11,7 @@ const FilmSchema=new mongoose.Schema({
     genre:{type:Schema.Types.ObjectId,ref: "genre"},
     image:String,
     author:{type:Schema.Types.ObjectId,ref: "users"},
+    series: [String]
 })
 
 

@@ -1,6 +1,7 @@
 let addFilmUrlBtn = document.querySelector('#addFilmUrlBtn')
 let addSeriesBtn = document.querySelector('#addSeriesBtn')
 let urls = document.querySelector('#urls')
+
 function addSeries(){
     addFilmUrlBtn.style.display = 'none'
     let output = urls.innerHTML
