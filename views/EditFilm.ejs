@@ -44,10 +44,34 @@
                         <input value=" <%=films.time%>" type="text" placeholder="Введите длительность " name="time">
                     </fieldset>
 
+                    <%
+                    // console.log('films from editfilm=',films.series[0])
+                    if(films.series.length>0)
+                    {
+                        for (let counter=0 ; counter<films.series.length;counter++){
+                        console.log(counter)
+                        %>
+                        
                     <fieldset class="fieldset">
+                        <label for="">Добавьте ссылку на серию <%=counter+1%></label>
+                        <input id='#addSeriesBtn' value="<%=films.series[counter]%>" type="text" placeholder="Введите ссылку на серию" name="series" onchange="editSeries()">
+                    </fieldset>
+                    <%
+                    }
+                    %>
+
+                    <%}else{%>
+                        <fieldset class="fieldset">
                         <label for="">Добавьте ссылку на видео</label>
                         <input value="<%=films.video%>" type="text" placeholder="Введите ссылку на фильм " name="video">
                     </fieldset>
+                    <%    
+                }
+                    
+                    %>
+                    
+
+
 
                     <fieldset class="fieldset">
                         <label for="">Cтрана производитель фильма</label>
@@ -105,5 +129,8 @@
                 </form>
             </div>
         </div>
+        <script src="/js/serial.js">
+
+</script>
     </body>
 </html>

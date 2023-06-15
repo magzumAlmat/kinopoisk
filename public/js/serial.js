@@ -2,6 +2,12 @@ let addFilmUrlBtn = document.querySelector('#addFilmUrlBtn')
 let addSeriesBtn = document.querySelector('#addSeriesBtn')
 let urls = document.querySelector('#urls')
 
+function editSeries(){
+    console.log('editSeries fuction')
+}
+
+
+
 function addSeries(){
     addFilmUrlBtn.style.display = 'none'
     let output = urls.innerHTML
@@ -17,6 +23,7 @@ function addSeries(){
     series.append(input)
     urls.append(series)
 }
+
 function addFilmUrl(){
     addSeriesBtn.style.display = 'none'
     let filmUrl = document.querySelectorAll('#filmUrl')

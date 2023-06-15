@@ -61,8 +61,7 @@ const editFilm=async(req,res)=>{
         req.body.year.length>0 && 
         req.body.time.length>0 && 
         req.body.country.length>2 && 
-        req.body.ganre.length>0&& 
-        req.body.video.length>2)
+        req.body.ganre.length>0)
         {
             const films= await Film.findById(req.body.id)
             console.log('films= ',films)
@@ -75,7 +74,7 @@ const editFilm=async(req,res)=>{
             films.country =req.body.country,
             films.ganre=req.body.ganre,
             films.video=req.body.video,
-            
+            films.series=req.body.series,
             films.image=`/images/films/${req.file.filename}`,
             films.author=req.user._id
             films.save()
